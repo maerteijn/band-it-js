@@ -11,7 +11,6 @@ const META_TAG_REGEX = /(?<key>.*):(?<value>.*)/
 const GRIDLINE_REGEX = /(\S+\s*)/gi
 const CHORD_REGEX = /(?<chord>([A-G])(#|b)?([^/\s]*)(\/([A-G])(#|b)?)?)/i
 
-
 export class BandItChordSheetParser extends ChordSheetJS.ChordSheetParser {
   constructor(...args) {
     super(...args)

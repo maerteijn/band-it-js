@@ -20,7 +20,6 @@ x2
      Amadd9          Cmaj7/G       Fmaj7  Am7/G  Fmaj7
 I've been alone with you inside my mind`
 
-
 export const grid_chordsheet = `
 Under the Bridge - Red Hot Chili Peppers
 
