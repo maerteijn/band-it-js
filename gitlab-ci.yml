@@ -1,0 +1,24 @@
+stages:
+  - install
+  - ci
+
+image: node:12.16
+
+install:
+  stage: install
+  script:
+    - npm install
+  artifacts:
+    paths:
+      - node_modules
+
+lint:
+  stage: ci
+  script:
+  - npm run eslint
+  - npm run prettier
+
+test:
+  stage: ci
+  script:
+  - npm run coverage
