@@ -19,6 +19,13 @@
   "author": "band-it foundation",
   "license": "SEE LICENSE IN LICENSE",
   "homepage": "https://gitlab.com/band-it/band-it-js",
+  "dependencies": {
+    "chordjs": "^1.1.1",
+    "chordsheetjs": "^2.9.1",
+    "esm": "^3.2.25",
+    "ajv": "^6.12.0"
+  },
+  "main": "src/index.js",
   "devDependencies": {
     "chai": "^4.2.0",
     "eslint": "^5.16.0",
@@ -60,11 +67,5 @@
     "include": [
       "src/**"
     ]
-  },
-  "dependencies": {
-    "chordjs": "^1.1.1",
-    "chordsheetjs": "^2.9.1",
-    "esm": "^3.2.25",
-    "ajv": "^6.12.0"
   }
 }
