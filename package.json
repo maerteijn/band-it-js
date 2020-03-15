@@ -1,0 +1,70 @@
+{
+  "name": "band-it-js",
+  "version": "0.0.1",
+  "description": "Javascript reusable tools such as parsers, formatters and utilities",
+  "scripts": {
+    "test": "mocha -r esm tests/",
+    "test:debug": "mocha inspect -r esm tests/",
+    "coverage": "nyc npm test",
+    "eslint": "eslint src/ tests/ --ext .js",
+    "eslint:fix": "eslint src/ tests/ --ext .js --fix",
+    "prettier": "prettier --check '{tests,src}/**/*.js'",
+    "prettier:fix": "prettier --write '{tests,src}/**/*.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/band-it/band-it-js.git"
+  },
+  "keywords": [],
+  "author": "band-it foundation",
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://gitlab.com/band-it/band-it-js",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^5.16.0",
+    "mocha": "^7.1.0",
+    "nyc": "^15.0.0",
+    "prettier": "^1.19.1"
+  },
+  "eslintConfig": {
+    "root": true,
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+    "env": {
+      "node": true,
+      "es6": true,
+      "mocha": true
+    },
+    "extends": [
+      "eslint:recommended"
+    ],
+    "rules": {
+      "semi": [
+        "error",
+        "never"
+      ],
+      "no-console": "off"
+    }
+  },
+  "prettier": {
+    "semi": false
+  },
+  "esm": {
+    "cache": false
+  },
+  "nyc": {
+    "cache": false,
+    "all": true,
+    "include": [
+      "src/**"
+    ]
+  },
+  "dependencies": {
+    "chordjs": "^1.1.1",
+    "chordsheetjs": "^2.9.1",
+    "esm": "^3.2.25",
+    "ajv": "^6.12.0"
+  }
+}
