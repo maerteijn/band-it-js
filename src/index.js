@@ -1,5 +1,5 @@
 import { BandItChordProFormatter } from "./formatter"
-import { BandItChordSheetParser } from "./parser"
+import { BandItChordSheetParser } from "./parser/chordsheet"
 import { BandItSong } from "./song"
 import { parseChordSheet, parseChordPro, dumpSongToChordPro } from "./utils"
 import { validator } from "./schema"

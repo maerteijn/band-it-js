@@ -1,5 +1,5 @@
 import ChordSheetJS from "chordsheetjs"
-import { BandItSong } from "./song"
+import { BandItSong } from "../song"
 
 const HEADER_REGEX = /\[(?<value>.*)\]/
 const VERSE_CHORUS_REGEX = /(?<section>verse|chorus)(.*)/i

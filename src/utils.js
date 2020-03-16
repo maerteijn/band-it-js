@@ -1,5 +1,5 @@
 import ChordSheetJS from "chordsheetjs"
-import { BandItChordSheetParser } from "./parser"
+import { BandItChordSheetParser } from "./parser/chordsheet"
 import { BandItChordProFormatter } from "./formatter"
 
 export function parseChordSheet(chorsheet) {

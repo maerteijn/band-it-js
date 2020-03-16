@@ -2,7 +2,7 @@ import { assert } from "chai"
 
 import ChordSheetJS from "chordsheetjs"
 
-import { BandItChordSheetParser } from "../src/parser"
+import { BandItChordSheetParser } from "../src/parser/chordsheet"
 import { BandItSong } from "../src/song"
 import * as fixtures from "./fixtures"
 
