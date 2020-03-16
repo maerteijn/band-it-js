@@ -24,11 +24,11 @@ describe("parseChordPro", () => {
 
 describe("dumpSongToChordPro", () => {
   it("A parsed chordpro song can be converted back a chordpro sheet", () => {
-    const song = parseChordPro(fixtures.simple_chordpro)
+    const song = parseChordPro(fixtures.extended_chordpro)
     const chordpro = "\n" + dumpSongToChordPro(song)
 
     // it should actually be the same as the chordpro we started with
-    assert.equal(chordpro, fixtures.simple_chordpro)
+    assert.equal(chordpro, fixtures.extended_chordpro)
   })
   it("And a chordsheet file as well", () => {
     const song = parseChordSheet(fixtures.extended_chordsheet)
