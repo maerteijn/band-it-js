@@ -1,4 +1,5 @@
 import ChordSheetJS from "chordsheetjs"
+import { BandItSong } from "./song"
 
 const HEADER_REGEX = /\[(?<value>.*)\]/
 const VERSE_CHORUS_REGEX = /(?<section>verse|chorus)(.*)/i
@@ -46,7 +47,7 @@ export class BandItChordSheetParser extends ChordSheetJS.ChordSheetParser {
       this.song.addLine()
       this.endSection()
     }
-    return song
+    return new BandItSong(song)
   }
 
   parseLine(line) {
@@ -68,7 +69,9 @@ export class BandItChordSheetParser extends ChordSheetJS.ChordSheetParser {
     } else if (this.currentSection && this.currentSection.type == "grid") {
       this.parseGridLine(line)
     } else {
-      return super.parseNonEmptyLine(line)
+      super.parseNonEmptyLine(line)
+      const currentType = this.currentSection && this.currentSection.type
+      this.song.setCurrentLineType(currentType)
     }
   }
 
