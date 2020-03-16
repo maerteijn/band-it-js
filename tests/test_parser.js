@@ -3,11 +3,17 @@ import { assert } from "chai"
 import ChordSheetJS from "chordsheetjs"
 
 import { BandItChordSheetParser } from "../src/parser"
+import { BandItSong } from "../src/song"
+
 import * as fixtures from "./fixtures"
 
 describe("BandItChordSheetParser - simple", () => {
   const parser = new BandItChordSheetParser()
   const song = parser.parse(fixtures.simple_chordsheet)
+
+  it("The BandItChordSheetParser should return a BandItSong", () => {
+    assert.isTrue(song instanceof BandItSong)
+  })
 
   it("The chordsheet has no sections, so the song has no items", () => {
     song.lines.forEach(line => {
