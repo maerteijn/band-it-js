@@ -35,11 +35,32 @@ Under the Bridge - Red Hot Chili Peppers
 | E . . B | . . . . | . C#m . A   | . . . . |
 `
 
+export const grid_chordpro = `
+Under the Bridge - Red Hot Chili Peppers
+
+{start_of_grid: Interlude}
+| E . . B | . . . . | . C#m . G#m | . A . . |
+        Yeah            yeah  yeah
+| E . . B | . . . . | . C#m . A   | . . . . |
+{end_of_grid: Interlude}
+`
+
 export const simple_chordpro = `
 {title: Hello}
 {artist: Lionel Richie}
 
 {tempo: 63}
+`
+
+export const extended_chordpro = `
+{title: Hello}
+{artist: Lionel Richie}
+
+{tempo: 63}
+
+{x_start_of_section: Intro}
+[Amadd9] [Cmaj7/G] [Fmaj7] [Am7/G] [Fmaj7]
+{x_end_of_section: Intro}
 
 {start_of_verse: Verse 1}
 I've [Amadd9]been alone with [Cmaj7/G]you inside my [Fmaj7]mind[Am7/G][Fmaj7]
