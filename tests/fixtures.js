@@ -35,16 +35,6 @@ Under the Bridge - Red Hot Chili Peppers
 | E . . B | . . . . | . C#m . A   | . . . . |
 `
 
-export const grid_chordpro = `
-Under the Bridge - Red Hot Chili Peppers
-
-{start_of_grid: Interlude}
-| E . . B | . . . . | . C#m . G#m | . A . . |
-        Yeah            yeah  yeah
-| E . . B | . . . . | . C#m . A   | . . . . |
-{end_of_grid: Interlude}
-`
-
 export const simple_chordpro = `
 {title: Hello}
 {artist: Lionel Richie}
@@ -66,6 +56,17 @@ export const extended_chordpro = `
 I've [Amadd9]been alone with [Cmaj7/G]you inside my [Fmaj7]mind[Am7/G][Fmaj7]
 And [Amadd9]in my dreams I've [Cma7/G]kissed your lips
 {end_of_verse: Verse 1}
+`
+
+export const grid_chordpro = `
+{title: Under the Bridge}
+{artist: Red Hot Chili Peppers}
+
+{start_of_grid: Interlude}
+| E . . B | . . . . | . C#m . G#m | . A . . |
+        Yeah            yeah  yeah
+| E . . B | . . . . | . C#m . A   | . . . . |
+{end_of_grid: Interlude}
 `
 
 export const json_valid_output_example = `
