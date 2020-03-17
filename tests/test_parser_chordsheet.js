@@ -82,7 +82,6 @@ describe("BandItChordSheetParser - grid", () => {
   it("Gridlines with lyrics only are also supported", () => {
     const gridLine = song.lines[6]
     assert.equal(gridLine.type, "grid")
-    // each line cahracter / chord is stored in an own item
     assert.equal(gridLine.items.length, 1)
     assert.equal(gridLine.items[0].lyrics, "        Yeah            yeah  yeah")
   })
