@@ -1,16 +1,15 @@
 import ChordSheetJS from "chordsheetjs"
 import { BandItSong } from "../song"
-
-const HEADER_REGEX = /\[(?<value>.*)\]/
-const VERSE_CHORUS_REGEX = /(?<section>verse|chorus)(.*)/i
-const CHORUS_REGEX = /(chorus)(.*)/i
-const GRID_REGEX = /(grid)(?<value>.*)/i
-
-const TITLE_ARTIST_REGEX = /(?<title>.*)-(?<artist>.*)/
-const META_TAG_REGEX = /(?<key>.*):(?<value>.*)/
-
-const GRIDLINE_REGEX = /(\S+\s*)/gi
-const CHORD_REGEX = /(?<chord>([A-G])(#|b)?([^/\s]*)(\/([A-G])(#|b)?)?)/i
+import { handleGridLine } from "./gridline"
+import {
+  GRID,
+  HEADER_REGEX,
+  VERSE_CHORUS_REGEX,
+  CHORUS_REGEX,
+  GRID_REGEX,
+  TITLE_ARTIST_REGEX,
+  META_TAG_REGEX
+} from "./constants"
 
 export class BandItChordSheetParser extends ChordSheetJS.ChordSheetParser {
   constructor(...args) {
@@ -66,7 +65,7 @@ export class BandItChordSheetParser extends ChordSheetJS.ChordSheetParser {
       // we did not encountered the first header yet, so this line could be
       // be potentional metadata
       this.parseMetaData(line)
-    } else if (this.currentSection && this.currentSection.type == "grid") {
+    } else if (this.currentSection && this.currentSection.type == GRID) {
       this.parseGridLine(line)
     } else {
       super.parseNonEmptyLine(line)
@@ -89,7 +88,7 @@ export class BandItChordSheetParser extends ChordSheetJS.ChordSheetParser {
       }
     } else if (GRID_REGEX.test(header)) {
       const { value } = header.match(GRID_REGEX).groups
-      this.startSection("grid", value)
+      this.startSection(GRID, value)
     } else {
       // not a verse or chorus, so add a custom x_ section
       this.startSection("section", header, "x_")
@@ -109,23 +108,8 @@ export class BandItChordSheetParser extends ChordSheetJS.ChordSheetParser {
   }
 
   parseGridLine(line) {
-    this.songLine.type = "grid"
-
-    if (line[0] == "|") {
-      const matches = line.matchAll(GRIDLINE_REGEX)
-
-      for (const match of matches) {
-        const item = match[0]
-        if (CHORD_REGEX.test(item)) {
-          this.songLine.addChordLyricsPair(item, "")
-        } else {
-          this.songLine.addChordLyricsPair("", item)
-        }
-      }
-    } else {
-      // Only lyrics on this line, so add the line as one item
-      this.songLine.addChordLyricsPair("", line)
-    }
+    this.songLine.type = GRID
+    handleGridLine(line, this.songLine)
   }
 
   ensureChordLyricsPairInitialized() {
