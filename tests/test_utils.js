@@ -1,6 +1,6 @@
-import ChordSheetJS from "chordsheetjs"
 import { assert } from "chai"
 
+import { BandItSong } from "../src/song"
 import {
   parseChordSheet,
   parseChordPro,
@@ -11,14 +11,14 @@ import * as fixtures from "./fixtures"
 describe("parseChordSheet", () => {
   it("Parsing a chordsheet should return a song", () => {
     const song = parseChordSheet(fixtures.simple_chordsheet)
-    assert.instanceOf(song, ChordSheetJS.Song)
+    assert.instanceOf(song, BandItSong)
   })
 })
 
 describe("parseChordPro", () => {
   it("Parsing a chordpro sheet should return a song", () => {
     const song = parseChordPro(fixtures.simple_chordpro)
-    assert.instanceOf(song, ChordSheetJS.Song)
+    assert.instanceOf(song, BandItSong)
   })
 })
 
@@ -28,7 +28,7 @@ describe("dumpSongToChordPro", () => {
     const chordpro = "\n" + dumpSongToChordPro(song)
 
     // it should actually be the same as the chordpro we started with
-    assert.equal(chordpro, fixtures.extended_chordpro)
+    assert.equal(chordpro, fixtures.extended_chordpro + "\n")
   })
   it("And a chordsheet file as well", () => {
     const song = parseChordSheet(fixtures.extended_chordsheet)

@@ -1,4 +1,3 @@
-import ChordSheetJS from "chordsheetjs"
 import { BandItChordSheetParser } from "./parser/chordsheet"
 import { BandItChordProParser } from "./parser/chordpro"
 import { BandItChordProFormatter } from "./formatter"
