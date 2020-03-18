@@ -9,7 +9,7 @@ import {
   GRID_REGEX,
   TITLE_ARTIST_REGEX,
   META_TAG_REGEX
-} from "./constants"
+} from "../constants"
 
 export class BandItChordSheetParser extends ChordSheetJS.ChordSheetParser {
   constructor(...args) {

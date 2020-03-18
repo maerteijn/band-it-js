@@ -9,7 +9,7 @@ import {
   SECTION,
   START_OF_SECTION,
   END_OF_SECTION
-} from "./constants"
+} from "../constants"
 
 export class BandItChordProParser extends ChordSheetJS.ChordProParser {
   parse(data) {
