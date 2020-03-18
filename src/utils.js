@@ -1,5 +1,6 @@
 import ChordSheetJS from "chordsheetjs"
 import { BandItChordSheetParser } from "./parser/chordsheet"
+import { BandItChordProParser } from "./parser/chordpro"
 import { BandItChordProFormatter } from "./formatter"
 
 export function parseChordSheet(chorsheet) {
@@ -8,7 +9,7 @@ export function parseChordSheet(chorsheet) {
 }
 
 export function parseChordPro(chordpro) {
-  const parser = new ChordSheetJS.ChordProParser()
+  const parser = new BandItChordProParser()
   return parser.parse(chordpro)
 }
 
