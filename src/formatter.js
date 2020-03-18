@@ -1,4 +1,5 @@
 import ChordSheetJS from "chordsheetjs"
+import { GRID } from "./constants"
 
 export class BandItChordProFormatter extends ChordSheetJS.ChordProFormatter {
   constructor(...args) {
@@ -12,7 +13,7 @@ export class BandItChordProFormatter extends ChordSheetJS.ChordProFormatter {
   }
 
   formatChordLyricsPairChords(chordLyricsPair) {
-    if (this.currentLineType == "grid") {
+    if (this.currentLineType == GRID) {
       return chordLyricsPair.chords
     }
     return super.formatChordLyricsPairChords(chordLyricsPair)
