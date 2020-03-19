@@ -67,5 +67,8 @@
     "include": [
       "src/**"
     ]
-  }
+  },
+  "browserslist": [
+    "node 12.16"
+  ]
 }
