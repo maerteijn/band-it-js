@@ -81,7 +81,7 @@ describe("BandItChordProParser - grid", () => {
     assert.equal(gridLine.type, "grid")
     // each line cahracter / chord is stored in an own item
     assert.equal(gridLine.items.length, 21)
-    assert.equal(gridLine.items[0].lyrics, "| ")
+    assert.equal(gridLine.items[0].lyrics, "|  ")
     assert.equal(gridLine.items[0].chords, "")
     assert.equal(gridLine.items[1].lyrics, "")
     assert.equal(gridLine.items[1].chords, "E ")
@@ -90,8 +90,9 @@ describe("BandItChordProParser - grid", () => {
   it("Gridlines with lyrics only are also supported", () => {
     const gridLine = song.lines[5]
     assert.equal(gridLine.type, "grid")
-    assert.equal(gridLine.items.length, 1)
-    assert.equal(gridLine.items[0].lyrics, "        Yeah            yeah  yeah")
+    assert.equal(gridLine.items.length, 21)
+    assert.equal(gridLine.items[4].lyrics, "Yeah ")
+    assert.equal(gridLine.items[12].lyrics, "yeah ")
   })
 })
 

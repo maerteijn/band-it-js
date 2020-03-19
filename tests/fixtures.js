@@ -30,9 +30,9 @@ export const grid_chordsheet = `
 Under the Bridge - Red Hot Chili Peppers
 
 [Grid Interlude]
-| E . . B | . . . . | . C#m . G#m | . A . . |
-        Yeah            yeah  yeah
-| E . . B | . . . . | . C#m . A   | . . . . |
+|  E . . B    | . . . . | . C#m  . G#m  | . A . . |
+|| . . . Yeah | . . . . | . yeah . yeah | . . . . |
+|  E . . B    | . . . . | . C#m  . A    | . . . . |
 `
 
 export const simple_chordpro = `
@@ -63,9 +63,9 @@ export const grid_chordpro = `
 {artist: Red Hot Chili Peppers}
 
 {start_of_grid: Interlude}
-| E . . B | . . . . | . C#m . G#m | . A . . |
-        Yeah            yeah  yeah
-| E . . B | . . . . | . C#m . A   | . . . . |
+|  E . . B    | . . . . | . C#m  . G#m  | . A . . |
+|| . . . Yeah | . . . . | . yeah . yeah | . . . . |
+|  E . . B    | . . . . | . C#m  . A    | . . . . |
 {end_of_grid: Interlude}
 `
 

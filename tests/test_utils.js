@@ -46,9 +46,18 @@ describe("dumpSongToChordPro", () => {
     const chordpro = dumpSongToChordPro(song)
 
     assert.include(chordpro, "{start_of_grid: Interlude}")
-    assert.include(chordpro, "| E . . B | . . . . | . C#m . G#m | . A . . |")
-    assert.include(chordpro, "        Yeah            yeah  yeah")
-    assert.include(chordpro, "| E . . B | . . . . | . C#m . A   | . . . . |")
+    assert.include(
+      chordpro,
+      "|  E . . B    | . . . . | . C#m  . G#m  | . A . . |"
+    )
+    assert.include(
+      chordpro,
+      "|| . . . Yeah | . . . . | . yeah . yeah | . . . . |"
+    )
+    assert.include(
+      chordpro,
+      "|  E . . B    | . . . . | . C#m  . A    | . . . . |"
+    )
     assert.include(chordpro, "{end_of_grid: Interlude}")
   })
 })
