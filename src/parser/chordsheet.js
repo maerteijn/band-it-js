@@ -37,8 +37,10 @@ export class BandItChordSheetParser extends ChordSheetJS.ChordSheetParser {
   }
 
   parse(data) {
-    // remove multiple blank lines before parsing so we get a 'clean' song
+    // remove multiple blank lines and '\r' before parsing so we get a 'clean' song
+    data = data.replace(/\r\n/g, "\n")
     data = data.replace(/^\n{1,}$/gm, "")
+
     const song = super.parse(data)
 
     if (this.currentSection !== null) {

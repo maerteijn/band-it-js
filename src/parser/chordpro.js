@@ -27,8 +27,12 @@ export class BandItChordProParser extends ChordSheetJS.ChordProParser {
     this.song.addLine()
   }
 
-  parseDocument(document) {
-    for (const line of document.split("\n")) {
+  parseDocument(data) {
+    // remove multiple blank lines and '\r' before parsing so we get a 'clean' song
+    data = data.replace(/\r\n/g, "\n")
+    data = data.replace(/^\n{1,}$/gm, "")
+
+    for (const line of data.split("\n")) {
       // A gridline with contents should be handled differently as the
       // rest. Make sure the {end_of_grid} tag is processed normally
       if (this.isGridLine(line)) {
