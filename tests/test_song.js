@@ -4,6 +4,8 @@ import ChordSheetJS from "chordsheetjs"
 
 import { BandItChordSheetParser } from "../src/parser/chordsheet"
 import { BandItSong } from "../src/song"
+import { BandItSection } from "../src/section"
+
 import * as fixtures from "./fixtures"
 
 describe("BandIt Song class", () => {
@@ -21,6 +23,12 @@ describe("BandIt Song class", () => {
 })
 
 describe("BandIt Song sections", () => {
+  it("Sections are BandItSection objects", () => {
+    const parser = new BandItChordSheetParser()
+    const song = parser.parse(fixtures.extended_chordsheet)
+    assert.isTrue(song.sections[0] instanceof BandItSection)
+  })
+
   it("A BandItSong creates sections for each part of the song when initiated", () => {
     const parser = new BandItChordSheetParser()
     const song = parser.parse(fixtures.extended_chordsheet)
