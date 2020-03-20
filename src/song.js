@@ -1,5 +1,7 @@
 import ChordSheetJS from "chordsheetjs"
 
+import { BandItSection } from "./section"
+
 export class BandItSong extends ChordSheetJS.Song {
   constructor(song = null) {
     super()
@@ -7,8 +9,6 @@ export class BandItSong extends ChordSheetJS.Song {
       Object.assign(this, song)
     }
     this.sections = []
-    // TODO: create an object out of the section, maybe it should subclass
-    // the Paragraph class of chordsheetjs
     this.currentSection = null
     this.collectSections()
   }
@@ -20,16 +20,18 @@ export class BandItSong extends ChordSheetJS.Song {
     this.currentSection = null
   }
 
-  ensureSection(title = "", type) {
+  ensureSection(title = "") {
     if (this.currentSection == null) {
-      this.currentSection = { title: title, type: type, lines: [] }
+      this.currentSection = new BandItSection(title)
     }
+  }
+
+  addLineToSection(line) {
+    this.currentSection && this.currentSection.addLine(line)
   }
 
   collectSections() {
     for (const line of this.lines) {
-      this.ensureSection()
-
       if (line.items.length > 0) {
         const item = line.items[0]
 
@@ -40,7 +42,7 @@ export class BandItSong extends ChordSheetJS.Song {
             case "start_of_grid":
             case "x_start_of_section":
               this.flushSection()
-              this.ensureSection(item.value, line.type)
+              this.ensureSection(item.value)
               break
             case "end_of_verse":
             case "end_of_chorus":
@@ -50,14 +52,10 @@ export class BandItSong extends ChordSheetJS.Song {
               break
             // todo: handle the chorus reference to render it again
             default:
-              this.currentSection.lines.push(line)
+              this.addLineToSection(line)
           }
         } else {
-          // this can be a bit smarter done once section is an object. See
-          // the paragraph class how to do this (maybe derive from
-          // paragraph ?)
-          this.currentSection.type = line.type
-          this.currentSection.lines.push(line)
+          this.addLineToSection(line)
         }
       }
     }
