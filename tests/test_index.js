@@ -7,6 +7,7 @@ describe("Export modules", () => {
     assert("BandItChordProParser" in BandItJS)
     assert("BandItChordProFormatter" in BandItJS)
     assert("BandItSong" in BandItJS)
+    assert("BandItSection" in BandItJS)
     assert("parseChordSheet" in BandItJS)
     assert("parseChordPro" in BandItJS)
     assert("dumpSongToChordPro" in BandItJS)
