@@ -1,5 +1,4 @@
-import { BandItChordSheetParser } from "./parser/chordsheet"
-import { BandItChordProParser } from "./parser/chordpro"
+import { BandItChordSheetParser, BandItChordProParser } from "./parser"
 import { BandItChordProFormatter } from "./formatter"
 import { BandItSong } from "./song"
 import { BandItSection } from "./section"
