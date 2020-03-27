@@ -4,6 +4,7 @@ import { BandItSong } from "../src/song"
 import {
   parseChordSheet,
   parseChordPro,
+  dumpSongToChordSheet,
   dumpSongToChordPro
 } from "../src/utils"
 import * as fixtures from "./fixtures"
@@ -59,5 +60,53 @@ describe("dumpSongToChordPro", () => {
       "|  E . . B    | . . . . | . C#m  . A    | . . . . |"
     )
     assert.include(chordpro, "{end_of_grid: Interlude}")
+  })
+})
+
+describe("dumpSongToChordSheet", () => {
+  it("A parsed chordpro song can be converted to a chordsheet", () => {
+    const song = parseChordPro(fixtures.extended_chordpro)
+    const chordsheet = dumpSongToChordSheet(song)
+
+    assert.include(chordsheet, "Hello - Lionel Richie")
+    assert.notInclude(chordsheet, "Hello - Lionel Richie}")
+    assert.include(chordsheet, "tempo: 63")
+    assert.include(chordsheet, "[Intro]")
+    assert.include(chordsheet, "Amadd9 Cmaj7/G Fmaj7 Am7/G Fmaj7")
+    assert.include(chordsheet, "[Verse 1]")
+    assert.include(
+      chordsheet,
+      "     Amadd9          Cmaj7/G       Fmaj7 Am7/G Fmaj7"
+    )
+    assert.include(chordsheet, "I've been alone with you inside my mind")
+  })
+
+  it("And a parsed chordsheet file as well", () => {
+    const song = parseChordSheet(fixtures.extended_chordsheet)
+    const chordsheet = dumpSongToChordSheet(song)
+
+    assert.include(chordsheet, "[Chorus 1]")
+    assert.include(chordsheet, "      Dm             G")
+    assert.include(chordsheet, "I can see it in your eyes,")
+    assert.include(chordsheet, "      C              F")
+    assert.include(chordsheet, "I can see it in your smile")
+  })
+  it("We can also output grid sections to a chordsheet", () => {
+    const song = parseChordSheet(fixtures.grid_chordsheet)
+    const chordsheet = dumpSongToChordSheet(song)
+
+    assert.include(chordsheet, "[Interlude]")
+    assert.include(
+      chordsheet,
+      "|  E . . B    | . . . . | . C#m  . G#m  | . A . . |"
+    )
+    assert.include(
+      chordsheet,
+      "|| . . . Yeah | . . . . | . yeah . yeah | . . . . |"
+    )
+    assert.include(
+      chordsheet,
+      "|  E . . B    | . . . . | . C#m  . A    | . . . . |"
+    )
   })
 })
