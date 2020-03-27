@@ -1,6 +1,7 @@
 import ChordSheetJS from "chordsheetjs"
 
 import { BandItSection } from "./section"
+import { X_SECTION_REGEX } from "./constants"
 
 export class BandItSong extends ChordSheetJS.Song {
   constructor(song = null) {
@@ -11,6 +12,18 @@ export class BandItSong extends ChordSheetJS.Song {
     this.sections = []
     this.currentSection = null
     this.collectSections()
+  }
+
+  getOptimizedMetaData() {
+    const metadata = super.getOptimizedMetaData()
+    // This is because the original song automatically
+    // adds x_** tags as metadata
+    Object.keys(metadata).forEach(key => {
+      if (X_SECTION_REGEX.test(key)) {
+        delete metadata[key]
+      }
+    })
+    return metadata
   }
 
   flushSection() {

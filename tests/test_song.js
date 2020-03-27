@@ -2,7 +2,7 @@ import { assert } from "chai"
 
 import ChordSheetJS from "chordsheetjs"
 
-import { BandItChordSheetParser } from "../src/parser/chordsheet"
+import { BandItChordSheetParser } from "../src/parser"
 import { BandItSong } from "../src/song"
 import { BandItSection } from "../src/section"
 
@@ -40,6 +40,13 @@ describe("BandIt Song sections", () => {
     assert.equal(song.sections[1].type, "verse")
     assert.equal(song.sections[2].title, "Chorus 1")
     assert.equal(song.sections[2].type, "chorus")
+  })
+
+  it("Sections should not be available as metadata", () => {
+    const parser = new BandItChordSheetParser()
+    const song = parser.parse(fixtures.extended_chordsheet)
+    assert.doesNotHaveAnyKeys(song.metaData, "x_start_of_section")
+    assert.doesNotHaveAnyKeys(song.metaData, "x_end_of_section")
   })
 
   it("A grid section is marked as a grid section", () => {

@@ -6,6 +6,7 @@ export const GRID_REGEX = /(grid)(?<value>.*)/i
 export const SECTION = "x_section"
 export const START_OF_SECTION = "x_start_of_section"
 export const END_OF_SECTION = "x_end_of_section"
+export const X_SECTION_REGEX = /(?<section>x_start_of_section|x_end_of_section)(.*)/i
 
 export const HEADER_REGEX = /\[(?<value>.*)\]/
 export const VERSE_CHORUS_REGEX = /(?<section>verse|chorus)(.*)/i
