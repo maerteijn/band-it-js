@@ -4,11 +4,14 @@ import { ARTIST, TITLE, GRID } from "../constants"
 
 export class BandItChordSheetFormatter extends ChordSheetJS.TextFormatter {
   format(song) {
-    return [
+    const formatted = [
       this.formatTitle(song),
       this.formatMetaData(song),
       this.formatSections(song)
     ].join("\n\n")
+
+    // cleanup empty songlines
+    return formatted.replace(/^\n{1,}$/gm, "")
   }
 
   formatTitle(song) {
