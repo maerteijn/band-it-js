@@ -2,7 +2,12 @@ import { BandItChordSheetParser, BandItChordProParser } from "./parser"
 import { BandItChordSheetFormatter, BandItChordProFormatter } from "./formatter"
 import { BandItSong } from "./song"
 import { BandItSection } from "./section"
-import { parseChordSheet, parseChordPro, dumpSongToChordPro } from "./utils"
+import {
+  parseChordSheet,
+  parseChordPro,
+  dumpSongToChordSheet,
+  dumpSongToChordPro
+} from "./utils"
 import { validator } from "./schema"
 
 export default {
@@ -14,6 +19,7 @@ export default {
   BandItSection,
   parseChordSheet,
   parseChordPro,
+  dumpSongToChordSheet,
   dumpSongToChordPro,
   validator
 }
