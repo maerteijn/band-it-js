@@ -23,7 +23,12 @@ export class BandItChordSheetFormatter extends ChordSheetJS.TextFormatter {
     const keys = Object.keys(song.metaData).filter(
       key => ![ARTIST, TITLE].includes(key)
     )
-    return keys.map(key => `${key}: ${song.metaData[key]}`).join("\n")
+    return keys
+      .map(key => {
+        const title = key.charAt(0).toUpperCase() + key.slice(1)
+        return `${title}: ${song.metaData[key]}`
+      })
+      .join("\n")
   }
 
   formatGridItem(item) {

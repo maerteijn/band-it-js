@@ -70,7 +70,7 @@ describe("dumpSongToChordSheet", () => {
 
     assert.include(chordsheet, "Hello - Lionel Richie")
     assert.notInclude(chordsheet, "Hello - Lionel Richie}")
-    assert.include(chordsheet, "tempo: 63")
+    assert.include(chordsheet, "Tempo: 63")
     assert.include(chordsheet, "[Intro]")
     assert.include(chordsheet, "Amadd9 Cmaj7/G Fmaj7 Am7/G Fmaj7")
     assert.include(chordsheet, "[Verse 1]")
