@@ -44,24 +44,27 @@ export class BandItChordSheetFormatter extends ChordSheetJS.TextFormatter {
 
   formatSections(song) {
     return song.sections
-      .map(section => {
-        return `[${section.title}]\n` + this.formatSection(section)
-      })
+      .map(section => this.formatSection(section))
       .join("\n\n")
   }
 
   formatSection(section) {
     switch (section.type) {
       case GRID: {
-        return section.lines.map(line => this.formatGridLine(line)).join("\n")
+        const header = `[Grid ${section.title}]`
+        const lines = section.lines.map(line => this.formatGridLine(line))
+        lines.unshift(header)
+        return lines.join("\n")
       }
       default: {
+        const header = `[${section.title}]`
         const renderableLines = section.lines.filter(line =>
           line.hasRenderableItems()
         )
         const formattedLines = renderableLines.map(line =>
           this.formatLine(line)
         )
+        formattedLines.unshift(header)
         return formattedLines.join("\n")
       }
     }

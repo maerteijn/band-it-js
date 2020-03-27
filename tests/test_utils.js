@@ -95,7 +95,7 @@ describe("dumpSongToChordSheet", () => {
     const song = parseChordSheet(fixtures.grid_chordsheet)
     const chordsheet = dumpSongToChordSheet(song)
 
-    assert.include(chordsheet, "[Interlude]")
+    assert.include(chordsheet, "[Grid Interlude]")
     assert.include(
       chordsheet,
       "|  E . . B    | . . . . | . C#m  . G#m  | . A . . |"
