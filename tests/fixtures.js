@@ -15,9 +15,8 @@ Key: Am (A@444Hz)
 Amadd9 Cmaj7/G Fmaj7 Am7/G Fmaj7
 x2
 
-
 [Verse 1]
-     Amadd9          Cmaj7/G       Fmaj7  Am7/G  Fmaj7
+     Amadd9          Cmaj7/G       Fmaj7 Am7/G Fmaj7
 I've been alone with you inside my mind
 
 [Chorus 1]
