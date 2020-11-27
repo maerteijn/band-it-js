@@ -14,7 +14,8 @@ const definitionsSchema = {
         url: { type: "string" },
         title: { $ref: "definitions.json#/definitions/non-empty-string" },
         as_performed_by: { type: "string" },
-        lyrics: { type: "string" },
+        content_format: { type: "string" },
+        content: { type: "string" },
         transpose: { type: "integer" }
       },
       required: ["id", "url", "title", "as_performed_by", "lyrics", "transpose"]
