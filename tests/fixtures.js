@@ -73,7 +73,8 @@ export const json_valid_output_example = `
   {
     "as_performed_by": "Lionel Richie",
     "id": 3,
-    "lyrics": "{title: Hello}{artist: Lionel Richie}",
+    "content_format": "chordpro",
+    "content": "{title: Hello}{artist: Lionel Richie}",
     "title": "Hello",
     "transpose": 0,
     "url": "Hello - Lionel Richie.txt"
@@ -86,7 +87,8 @@ export const json_invalid_output_example = `
   {
     "as_performed_by": 3,
     "id": 4,
-    "lyrics": "{title: Hello}{artist: Lionel Richie}",
+    "content_format": "chordpro",
+    "content": "{title: Hello}{artist: Lionel Richie}",
     "title": "Hello",
     "url": "Hello - Lionel Richie.txt"
   }

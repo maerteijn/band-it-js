@@ -18,7 +18,15 @@ const definitionsSchema = {
         content: { type: "string" },
         transpose: { type: "integer" }
       },
-      required: ["id", "url", "title", "as_performed_by", "lyrics", "transpose"]
+      required: [
+        "id",
+        "url",
+        "title",
+        "as_performed_by",
+        "content_format",
+        "content",
+        "transpose"
+      ]
     }
   }
 }
