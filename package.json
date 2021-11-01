@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "Javascript reusable tools such as parsers, formatters and utilities",
   "scripts": {
-    "test": "mocha -r esm tests/",
-    "test:debug": "mocha inspect -r esm tests/",
+    "test": "mocha tests/",
+    "test:debug": "mocha inspect tests/",
     "coverage": "nyc npm test",
     "eslint": "eslint src/ tests/ --ext .js",
     "eslint:fix": "eslint src/ tests/ --ext .js --fix",
@@ -18,10 +18,10 @@
   "keywords": [],
   "author": "band-it foundation",
   "license": "SEE LICENSE IN LICENSE",
+  "type": "module",
   "homepage": "https://gitlab.com/band-it/band-it-js",
   "dependencies": {
-    "chordjs": "^1.1.1",
-    "chordsheetjs": "^2.9.1",
+    "chordsheetjs": "^4.10.0",
     "esm": "^3.2.25",
     "ajv": "^6.12.0"
   },
