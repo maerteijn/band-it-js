@@ -19,7 +19,7 @@
   "author": "band-it foundation",
   "license": "SEE LICENSE IN LICENSE",
   "type": "module",
-  "homepage": "https://gitlab.com/band-it/band-it-js",
+  "homepage": "https://github.com/maerteijn/band-it-js",
   "dependencies": {
     "chordsheetjs": "^4.10.0",
     "esm": "^3.2.25",

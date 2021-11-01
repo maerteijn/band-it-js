@@ -1,0 +1,25 @@
+name: band-it-js ci
+on: [push]
+jobs:
+  run-ci-steps:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v2
+    - name: Setup nodejs 14.17
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14.17
+    - name: Cache node modules
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package-lock.json') }}
+    - name: Install all dependencies
+      run: npm ci
+    - name: Run eslint
+      run: npm run eslint
+    - name: Run prettier
+      run: npm run prettier
+    - name: Run the unittests
+      run: npm run coverage

@@ -1,6 +1,5 @@
 # Band-it JS
-[![pipeline status](https://gitlab.com/band-it/band-it-js/badges/master/pipeline.svg)](https://gitlab.com/band-it/band-it-js/-/commits/master)
-[![coverage report](https://gitlab.com/band-it/band-it-js/badges/master/coverage.svg)](https://gitlab.com/band-it/band-it-js/-/commits/master)
+![](https://github.com/maerteijn/band-it-js/workflows/band-it-js%20ci/badge.svg)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 Front-end tools such as parsers, formatters and utilities.
