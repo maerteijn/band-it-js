@@ -1,7 +1,7 @@
 import ChordSheetJS from "chordsheetjs"
 
-import { BandItSection } from "./section"
-import { X_SECTION_REGEX } from "./constants"
+import { BandItSection } from "./section.js"
+import { X_SECTION_REGEX } from "./constants.js"
 
 export class BandItSong extends ChordSheetJS.Song {
   constructor(song = null) {

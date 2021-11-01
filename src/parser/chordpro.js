@@ -1,6 +1,6 @@
 import ChordSheetJS from "chordsheetjs"
-import { BandItSong } from "../song"
-import { handleGridLine } from "./gridline"
+import { BandItSong } from "../song.js"
+import { handleGridLine } from "./gridline.js"
 import {
   GRID,
   CONTROL_CHARS,
@@ -9,7 +9,7 @@ import {
   SECTION,
   START_OF_SECTION,
   END_OF_SECTION
-} from "../constants"
+} from "../constants.js"
 
 export class BandItChordProParser extends ChordSheetJS.ChordProParser {
   parse(data) {

@@ -1,6 +1,6 @@
 import ChordSheetJS from "chordsheetjs"
-import { BandItSong } from "../song"
-import { handleGridLine } from "./gridline"
+import { BandItSong } from "../song.js"
+import { handleGridLine } from "./gridline.js"
 import {
   GRID,
   HEADER_REGEX,
@@ -9,7 +9,7 @@ import {
   GRID_REGEX,
   TITLE_ARTIST_REGEX,
   META_TAG_REGEX
-} from "../constants"
+} from "../constants.js"
 
 class BandItParserSection {
   constructor(title, type, prefix) {

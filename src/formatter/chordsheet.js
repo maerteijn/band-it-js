@@ -1,6 +1,6 @@
 import ChordSheetJS from "chordsheetjs"
 
-import { ARTIST, TITLE, GRID } from "../constants"
+import { ARTIST, TITLE, GRID } from "../constants.js"
 
 export class BandItChordSheetFormatter extends ChordSheetJS.TextFormatter {
   format(song) {
@@ -15,18 +15,18 @@ export class BandItChordSheetFormatter extends ChordSheetJS.TextFormatter {
   }
 
   formatTitle(song) {
-    const { title, artist } = song.metaData
+    const { title, artist } = song.metadata
     return `${title} - ${artist}`
   }
 
   formatMetaData(song) {
-    const keys = Object.keys(song.metaData).filter(
+    const keys = Object.keys(song.metadata).filter(
       key => ![ARTIST, TITLE].includes(key)
     )
     return keys
       .map(key => {
         const title = key.charAt(0).toUpperCase() + key.slice(1)
-        return `${title}: ${song.metaData[key]}`
+        return `${title}: ${song.metadata[key]}`
       })
       .join("\n")
   }

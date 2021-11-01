@@ -1,7 +1,7 @@
-import { assert } from "chai"
+import { assert } from "./utils.js"
 
 import { validator } from "../src/schema.js"
-import * as fixtures from "./fixtures"
+import * as fixtures from "./fixtures.js"
 
 describe("JSON Schema", () => {
   it("A JSON should validate with the schema correctly correctly", () => {

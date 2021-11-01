@@ -1,10 +1,10 @@
-import { assert } from "chai"
+import { assert } from "./utils.js"
 
 import ChordSheetJS from "chordsheetjs"
-import { INDETERMINATE } from "chordsheetjs/lib/constants"
+import { INDETERMINATE } from "chordsheetjs"
 
-import { BandItSection } from "../src/section"
-import { GRID } from "../src/constants"
+import { BandItSection } from "../src/section.js"
+import { GRID } from "../src/constants.js"
 
 describe("BandIt Section class", () => {
   it("A BandItSection takes title, type and a length property as constructor parameters", () => {

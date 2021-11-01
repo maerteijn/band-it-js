@@ -1,5 +1,5 @@
 import ChordSheetJS from "chordsheetjs"
-import { GRID } from "../constants"
+import { GRID } from "../constants.js"
 
 export class BandItChordProFormatter extends ChordSheetJS.ChordProFormatter {
   constructor(...args) {

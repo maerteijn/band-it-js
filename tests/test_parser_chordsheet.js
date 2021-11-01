@@ -1,11 +1,11 @@
-import { assert } from "chai"
+import { assert } from "./utils.js"
 
 import ChordSheetJS from "chordsheetjs"
 
-import { BandItChordSheetParser } from "../src/parser/chordsheet"
-import { BandItSong } from "../src/song"
+import { BandItChordSheetParser } from "../src/parser/chordsheet.js"
+import { BandItSong } from "../src/song.js"
 
-import * as fixtures from "./fixtures"
+import * as fixtures from "./fixtures.js"
 
 describe("BandItChordSheetParser - simple", () => {
   const parser = new BandItChordSheetParser()

@@ -1,14 +1,17 @@
-import { BandItChordSheetParser, BandItChordProParser } from "./parser"
-import { BandItChordSheetFormatter, BandItChordProFormatter } from "./formatter"
-import { BandItSong } from "./song"
-import { BandItSection } from "./section"
+import { BandItChordSheetParser, BandItChordProParser } from "./parser/index.js"
+import {
+  BandItChordSheetFormatter,
+  BandItChordProFormatter
+} from "./formatter/index.js"
+import { BandItSong } from "./song.js"
+import { BandItSection } from "./section.js"
 import {
   parseChordSheet,
   parseChordPro,
   dumpSongToChordSheet,
   dumpSongToChordPro
-} from "./utils"
-import { validator } from "./schema"
+} from "./utils.js"
+import { validator } from "./schema.js"
 
 export default {
   BandItChordSheetParser,

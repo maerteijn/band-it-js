@@ -1,9 +1,9 @@
-import { assert } from "chai"
+import { assert } from "./utils.js"
 
-import { BandItChordSheetFormatter } from "../src/formatter"
-import { parseChordPro } from "../src/utils"
+import { BandItChordSheetFormatter } from "../src/formatter/index.js"
+import { parseChordPro } from "../src/utils.js"
 
-import * as fixtures from "./fixtures"
+import * as fixtures from "./fixtures.js"
 
 describe("ChordSheetFormatter", () => {
   it("The chordsheet formatter handles headers correctly", () => {

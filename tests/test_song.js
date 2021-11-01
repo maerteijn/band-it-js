@@ -1,12 +1,12 @@
-import { assert } from "chai"
+import { assert } from "./utils.js"
 
 import ChordSheetJS from "chordsheetjs"
 
-import { BandItChordSheetParser } from "../src/parser"
-import { BandItSong } from "../src/song"
-import { BandItSection } from "../src/section"
+import { BandItChordSheetParser } from "../src/parser/index.js"
+import { BandItSong } from "../src/song.js"
+import { BandItSection } from "../src/section.js"
 
-import * as fixtures from "./fixtures"
+import * as fixtures from "./fixtures.js"
 
 describe("BandIt Song class", () => {
   it("A BandItSong can take a ChordsheetJS song as constructor parameter", () => {
@@ -45,8 +45,8 @@ describe("BandIt Song sections", () => {
   it("Sections should not be available as metadata", () => {
     const parser = new BandItChordSheetParser()
     const song = parser.parse(fixtures.extended_chordsheet)
-    assert.doesNotHaveAnyKeys(song.metaData, "x_start_of_section")
-    assert.doesNotHaveAnyKeys(song.metaData, "x_end_of_section")
+    assert.doesNotHaveAnyKeys(song.metadata, "x_start_of_section")
+    assert.doesNotHaveAnyKeys(song.metadata, "x_end_of_section")
   })
 
   it("A grid section is marked as a grid section", () => {

@@ -1,9 +1,9 @@
-import { assert } from "chai"
+import { assert } from "./utils.js"
 
-import { BandItChordProFormatter } from "../src/formatter"
-import { parseChordSheet } from "../src/utils"
+import { BandItChordProFormatter } from "../src/formatter/index.js"
+import { parseChordSheet } from "../src/utils.js"
 
-import * as fixtures from "./fixtures"
+import * as fixtures from "./fixtures.js"
 
 describe("tChordProFormatter", () => {
   it("The chordsheet formatter can output grid sections", () => {

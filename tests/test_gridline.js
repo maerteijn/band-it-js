@@ -1,6 +1,6 @@
-import { assert } from "chai"
+import { assert } from "./utils.js"
 import ChordSheetJS from "chordsheetjs"
-import { handleGridLine } from "../src/parser/gridline"
+import { handleGridLine } from "../src/parser/gridline.js"
 
 describe("handleGridLine", () => {
   const line = "| A . . . | B . . . |"

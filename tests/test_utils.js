@@ -1,14 +1,14 @@
-import { assert } from "chai"
+import { assert } from "./utils.js"
 
-import { BandItSong } from "../src/song"
+import { BandItSong } from "../src/song.js"
 import {
   parseChordSheet,
   parseChordPro,
   dumpSongToChordSheet,
   dumpSongToChordPro
-} from "../src/utils"
+} from "../src/utils.js"
 
-import * as fixtures from "./fixtures"
+import * as fixtures from "./fixtures.js"
 
 describe("parseChordPro", () => {
   it("Parsing a chordpro sheet should return a song", () => {

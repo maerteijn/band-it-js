@@ -1,5 +1,5 @@
-import { assert } from "chai"
-import BandItJS from "../src/index"
+import { assert } from "./utils.js"
+import BandItJS from "../src/index.js"
 
 describe("Export modules", () => {
   it("We should export all modules available in this package", () => {
