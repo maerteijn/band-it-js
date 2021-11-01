@@ -5,7 +5,6 @@
   "scripts": {
     "test": "mocha tests/",
     "test:debug": "mocha inspect tests/",
-    "coverage": "nyc npm test",
     "eslint": "eslint src/ tests/ --ext .js",
     "eslint:fix": "eslint src/ tests/ --ext .js --fix",
     "prettier": "prettier --check '{tests,src}/**/*.js'",
@@ -30,7 +29,6 @@
     "chai": "^4.2.0",
     "eslint": "^7.15",
     "mocha": "^8.4.0",
-    "nyc": "^15.0.0",
     "prettier": "^1.19.1"
   },
   "eslintConfig": {
@@ -57,16 +55,6 @@
   },
   "prettier": {
     "semi": false
-  },
-  "esm": {
-    "cache": false
-  },
-  "nyc": {
-    "cache": false,
-    "all": true,
-    "include": [
-      "src/**"
-    ]
   },
   "browserslist": [
     "node 14.17"

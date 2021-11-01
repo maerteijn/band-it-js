@@ -22,4 +22,4 @@ jobs:
     - name: Run prettier
       run: npm run prettier
     - name: Run the unittests
-      run: npm run coverage
+      run: npm run test
