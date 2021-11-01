@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/band-it/band-it-js.git"
+    "url": "git+https://github.com/maerteijn/band-it-js.git"
   },
   "keywords": [],
   "author": "band-it foundation",
