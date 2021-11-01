@@ -7,7 +7,7 @@ Front-end tools such as parsers, formatters and utilities.
 
 ## Development requirements
 
-A recent version of `NodeJS` (tested with 12.16).
+A recent version of `NodeJS` (tested with 14.17).
 
 ## Development install
 

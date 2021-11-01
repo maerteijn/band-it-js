@@ -69,6 +69,6 @@
     ]
   },
   "browserslist": [
-    "node 12.16"
+    "node 14.17"
   ]
 }
