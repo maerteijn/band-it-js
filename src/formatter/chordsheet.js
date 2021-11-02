@@ -1,6 +1,6 @@
 import ChordSheetJS from "chordsheetjs"
 
-import { ARTIST, TITLE, GRID } from "../constants.js"
+import { ARTIST, TITLE } from "../constants.js"
 
 export class BandItChordSheetFormatter extends ChordSheetJS.TextFormatter {
   format(song) {
@@ -31,17 +31,6 @@ export class BandItChordSheetFormatter extends ChordSheetJS.TextFormatter {
       .join("\n")
   }
 
-  formatGridItem(item) {
-    if (item instanceof ChordSheetJS.ChordLyricsPair) {
-      return `${item.chords}${item.lyrics}`
-    }
-    return ""
-  }
-
-  formatGridLine(line) {
-    return line.items.map(item => this.formatGridItem(item)).join("")
-  }
-
   formatSections(song) {
     return song.sections
       .map(section => this.formatSection(section))
@@ -49,24 +38,12 @@ export class BandItChordSheetFormatter extends ChordSheetJS.TextFormatter {
   }
 
   formatSection(section) {
-    switch (section.type) {
-      case GRID: {
-        const header = `[Grid ${section.title}]`
-        const lines = section.lines.map(line => this.formatGridLine(line))
-        lines.unshift(header)
-        return lines.join("\n")
-      }
-      default: {
-        const header = `[${section.title}]`
-        const renderableLines = section.lines.filter(line =>
-          line.hasRenderableItems()
-        )
-        const formattedLines = renderableLines.map(line =>
-          this.formatLine(line)
-        )
-        formattedLines.unshift(header)
-        return formattedLines.join("\n")
-      }
-    }
+    const header = `[${section.title}]`
+    const renderableLines = section.lines.filter(line =>
+      line.hasRenderableItems()
+    )
+    const formattedLines = renderableLines.map(line => this.formatLine(line))
+    formattedLines.unshift(header)
+    return formattedLines.join("\n")
   }
 }
