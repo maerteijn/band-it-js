@@ -38,7 +38,7 @@ And `mocha` and `chai` are also there:
 To run a single test(case), use the grep feature of mocha:
 ```javascript
   it("The parsed chordsheet has a title", () => {
-    assert.equal(song.getMetaData("title"), "Hello")
+    assert.equal(song.metadata.title, "Hello")
   })
 ```
 

@@ -1,7 +1,6 @@
 import ChordSheetJS from "chordsheetjs"
 
 import { BandItSection } from "./section.js"
-import { X_SECTION_REGEX } from "./constants.js"
 
 export class BandItSong extends ChordSheetJS.Song {
   constructor(song = null) {
@@ -12,18 +11,6 @@ export class BandItSong extends ChordSheetJS.Song {
     this.sections = []
     this.currentSection = null
     this.collectSections()
-  }
-
-  getOptimizedMetaData() {
-    const metadata = super.getOptimizedMetaData()
-    // This is because the original song automatically
-    // adds x_** tags as metadata
-    Object.keys(metadata).forEach(key => {
-      if (X_SECTION_REGEX.test(key)) {
-        delete metadata[key]
-      }
-    })
-    return metadata
   }
 
   flushSection() {
@@ -52,15 +39,11 @@ export class BandItSong extends ChordSheetJS.Song {
           switch (item.name) {
             case "start_of_verse":
             case "start_of_chorus":
-            case "start_of_grid":
-            case "x_start_of_section":
               this.flushSection()
               this.ensureSection(item.value)
               break
             case "end_of_verse":
             case "end_of_chorus":
-            case "end_of_grid":
-            case "x_end_of_section":
               this.flushSection()
               break
             // todo: handle the chorus reference to render it again
