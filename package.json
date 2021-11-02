@@ -16,7 +16,7 @@
   },
   "keywords": [],
   "author": "Maerteijn",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "MIT",
   "type": "module",
   "homepage": "https://github.com/maerteijn/band-it-js",
   "dependencies": {
