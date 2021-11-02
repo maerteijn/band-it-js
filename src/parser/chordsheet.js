@@ -1,21 +1,17 @@
 import ChordSheetJS from "chordsheetjs"
 import { BandItSong } from "../song.js"
-import { handleGridLine } from "./gridline.js"
 import {
-  GRID,
   HEADER_REGEX,
   VERSE_CHORUS_REGEX,
   CHORUS_REGEX,
-  GRID_REGEX,
   TITLE_ARTIST_REGEX,
   META_TAG_REGEX
 } from "../constants.js"
 
 class BandItParserSection {
-  constructor(title, type, prefix) {
+  constructor(title, type) {
     this.title = title
     this.type = type
-    this.prefix = prefix
   }
 }
 
@@ -27,21 +23,22 @@ export class BandItChordSheetParser extends ChordSheetJS.ChordSheetParser {
     this.encounteredHeader = false
   }
 
-  startSection(type, title, prefix = "") {
+  startSection(type, title) {
     this.endSection()
-    this.currentSection = new BandItParserSection(title, type, prefix)
-    const tag = `${prefix}start_of_${type}: ${title}`
+    this.currentSection = new BandItParserSection(title, type)
+    const tag = `start_of_${type}: ${title}`
     this.song.addTag(tag)
   }
 
   endSection() {
     if (this.currentSection !== null) {
-      let { type, title, prefix } = this.currentSection
-      let tag = `${prefix}end_of_${type}: ${title}`
+      let { type, title } = this.currentSection
+      let tag = `end_of_${type}: ${title}`
       this.song.addTag(tag)
       this.song.addLine()
     }
     this.currentSection = null
+    this.chordLyricsPair = null
   }
 
   parse(data) {
@@ -60,31 +57,25 @@ export class BandItChordSheetParser extends ChordSheetJS.ChordSheetParser {
   }
 
   parseLine(line) {
-    super.parseLine(line)
-    if (line.trim().length == 0) {
-      this.endSection()
-    }
-  }
-
-  parseNonEmptyLine(line) {
     switch (true) {
+      case line.trim().length === 0: {
+        this.chordLyricsPair = null
+        break
+      }
       case HEADER_REGEX.test(line): {
         this.encounteredHeader = true
+        this.song.addLine()
         const { value } = line.match(HEADER_REGEX).groups
         this.parseHeader(line, value)
         break
       }
       case !this.encounteredHeader: {
-        // we did not encountered the first header yet, so this line could be
-        // be potentional metadata
+        // parse metadata until the first header occured
         this.parseMetaData(line)
         break
       }
-      case this.currentSection && this.currentSection.type == GRID: {
-        this.parseGridLine(line)
-        break
-      }
       default: {
+        this.songLine = this.song.addLine()
         super.parseNonEmptyLine(line)
         const currentType = this.currentSection && this.currentSection.type
         this.song.setCurrentLineType(currentType)
@@ -95,9 +86,12 @@ export class BandItChordSheetParser extends ChordSheetJS.ChordSheetParser {
   parseHeader(line, header) {
     switch (true) {
       case VERSE_CHORUS_REGEX.test(header): {
+        this.song.addLine()
         const nextline =
           this.hasNextLine() && this.lines[this.currentLine].trim()
         if (CHORUS_REGEX.test(header) && nextline == "") {
+          // support empty choruses which are references to other chorus
+          // sections
           this.song.addTag(`chorus: ${header}`)
         } else {
           // we start a chorus or verse section
@@ -106,13 +100,9 @@ export class BandItChordSheetParser extends ChordSheetJS.ChordSheetParser {
         }
         break
       }
-      case GRID_REGEX.test(header): {
-        const { value } = header.match(GRID_REGEX).groups
-        this.startSection(GRID, value)
-        break
-      }
       default: {
-        this.startSection("section", header, "x_")
+        this.song.addLine()
+        this.startSection("verse", header)
       }
     }
   }
@@ -120,22 +110,18 @@ export class BandItChordSheetParser extends ChordSheetJS.ChordSheetParser {
   parseMetaData(line) {
     switch (true) {
       case TITLE_ARTIST_REGEX.test(line): {
+        this.song.addLine()
         const { title, artist } = line.match(TITLE_ARTIST_REGEX).groups
         this.song.addTag(`title: ${title.trim()}`)
-        this.song.addLine()
         this.song.addTag(`artist: ${artist.trim()}`)
         break
       }
       case META_TAG_REGEX.test(line): {
+        this.song.addLine()
         const { key, value } = line.match(META_TAG_REGEX).groups
         this.song.addTag(`${key.toLowerCase().trim()}: ${value.trim()}`)
         break
       }
     }
-  }
-
-  parseGridLine(line) {
-    this.songLine.type = GRID
-    handleGridLine(line, this.songLine)
   }
 }
