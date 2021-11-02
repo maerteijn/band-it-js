@@ -20,10 +20,9 @@ describe("parseChordPro", () => {
 describe("dumpSongToChordPro", () => {
   it("A parsed chordpro song can be converted back a chordpro sheet", () => {
     const song = parseChordPro(fixtures.extended_chordpro)
-    const chordpro = "\n" + dumpSongToChordPro(song)
-
+    const chordpro = dumpSongToChordPro(song)
     // it should actually be the same as the chordpro we started with
-    assert.equal(chordpro, fixtures.extended_chordpro + "\n")
+    assert.equal(chordpro, fixtures.extended_chordpro)
   })
 })
 
