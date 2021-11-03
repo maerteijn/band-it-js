@@ -1,10 +1,7 @@
 import { assert } from "./utils.js"
 
 import { BandItSong } from "../src/song.js"
-import {
-  parseChordSheet,
-  dumpSongToChordSheet,
-} from "../src/utils.js"
+import { parseChordSheet, dumpSongToChordSheet } from "../src/utils.js"
 
 import * as fixtures from "./fixtures.js"
 

@@ -12,7 +12,7 @@ import {
   META_TAG_REGEX,
   GRIDLINE_REGEX,
   CHORD_REGEX,
-  INDICATOR_REGEX
+  INDICATOR_REGEX,
 } from "../constants.js"
 
 class BandItParserSection {

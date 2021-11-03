@@ -1,7 +1,5 @@
 import { BandItChordSheetParser } from "./parser/index.js"
-import {
-  BandItChordSheetFormatter,
-} from "./formatter/index.js"
+import { BandItChordSheetFormatter } from "./formatter/index.js"
 
 export function parseChordSheet(chorsheet) {
   const parser = new BandItChordSheetParser()

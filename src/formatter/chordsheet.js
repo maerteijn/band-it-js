@@ -7,7 +7,7 @@ export class BandItChordSheetFormatter extends ChordSheetJS.TextFormatter {
     const formatted = [
       this.formatTitle(song),
       this.formatMetaData(song),
-      this.formatSections(song)
+      this.formatSections(song),
     ].join("\n\n")
 
     // cleanup empty songlines
