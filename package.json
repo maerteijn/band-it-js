@@ -20,8 +20,7 @@
   "type": "module",
   "homepage": "https://github.com/maerteijn/band-it-js",
   "dependencies": {
-    "chordsheetjs": "^4.10.0",
-    "ajv": "^6.12.0"
+    "chordsheetjs": "^4.10.0"
   },
   "main": "src/index.js",
   "devDependencies": {
