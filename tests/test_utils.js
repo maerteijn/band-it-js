@@ -3,28 +3,10 @@ import { assert } from "./utils.js"
 import { BandItSong } from "../src/song.js"
 import {
   parseChordSheet,
-  parseChordPro,
   dumpSongToChordSheet,
-  dumpSongToChordPro
 } from "../src/utils.js"
 
 import * as fixtures from "./fixtures.js"
-
-describe("parseChordPro", () => {
-  it("Parsing a chordpro sheet should return a song", () => {
-    const song = parseChordPro(fixtures.simple_chordpro)
-    assert.instanceOf(song, BandItSong)
-  })
-})
-
-describe("dumpSongToChordPro", () => {
-  it("A parsed chordpro song can be converted back a chordpro sheet", () => {
-    const song = parseChordPro(fixtures.extended_chordpro)
-    const chordpro = dumpSongToChordPro(song)
-    // it should actually be the same as the chordpro we started with
-    assert.equal(chordpro, fixtures.extended_chordpro)
-  })
-})
 
 describe("parseChordSheet", () => {
   it("Parsing a chordsheet should return a song", () => {
