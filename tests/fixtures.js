@@ -11,7 +11,7 @@ Hello - Lionel Richie
 Tempo: 63
 Key: Am (A@444Hz)
 
-[Verse Intro]
+[Intro]
 Amadd9 Cmaj7/G Fmaj7 Am7/G Fmaj7
 x2
 
@@ -24,6 +24,15 @@ I've been alone with you inside my mind
 I can see it in your eyes,
       C              F
 I can see it in your smile`
+
+export const grid_chordsheet = `
+Under the Bridge - Red Hot Chili Peppers
+
+[Grid Interlude]
+|  E . . B    | . . . . | . C#m  . G#m  | . A . . |
+|| . . . Yeah | . . . . | . yeah . yeah | . . . . |
+|  E . . B    | . . . . | . C#m  . A    | . . . . |
+`
 
 export const simple_chordpro = `
 {title: Hello}

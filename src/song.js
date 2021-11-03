@@ -39,11 +39,13 @@ export class BandItSong extends ChordSheetJS.Song {
           switch (item.name) {
             case "start_of_verse":
             case "start_of_chorus":
+            case "start_of_grid":
               this.flushSection()
               this.ensureSection(item.value)
               break
             case "end_of_verse":
             case "end_of_chorus":
+            case "end_of_grid":
               this.flushSection()
               break
             // todo: handle the chorus reference to render it again

@@ -1,11 +1,18 @@
 import ChordSheetJS from "chordsheetjs"
 import { BandItSong } from "../song.js"
+
 import {
+  VERSE,
+  CHORUS,
+  GRID,
   HEADER_REGEX,
-  VERSE_CHORUS_REGEX,
   CHORUS_REGEX,
+  GRID_REGEX,
   TITLE_ARTIST_REGEX,
-  META_TAG_REGEX
+  META_TAG_REGEX,
+  GRIDLINE_REGEX,
+  CHORD_REGEX,
+  INDICATOR_REGEX
 } from "../constants.js"
 
 class BandItParserSection {
@@ -35,7 +42,7 @@ export class BandItChordSheetParser extends ChordSheetJS.ChordSheetParser {
       let { type, title } = this.currentSection
       let tag = `end_of_${type}: ${title}`
       this.song.addTag(tag)
-      this.song.addLine()
+      this.songLine = this.song.addLine()
     }
     this.currentSection = null
     this.chordLyricsPair = null
@@ -50,7 +57,7 @@ export class BandItChordSheetParser extends ChordSheetJS.ChordSheetParser {
 
     if (this.currentSection !== null) {
       // a section is still open, so let's close it
-      this.song.addLine()
+      this.songLine = this.song.addLine()
       this.endSection()
     }
     return new BandItSong(song)
@@ -64,7 +71,7 @@ export class BandItChordSheetParser extends ChordSheetJS.ChordSheetParser {
       }
       case HEADER_REGEX.test(line): {
         this.encounteredHeader = true
-        this.song.addLine()
+        this.songLine = this.song.addLine()
         const { value } = line.match(HEADER_REGEX).groups
         this.parseHeader(line, value)
         break
@@ -72,6 +79,10 @@ export class BandItChordSheetParser extends ChordSheetJS.ChordSheetParser {
       case !this.encounteredHeader: {
         // parse metadata until the first header occured
         this.parseMetaData(line)
+        break
+      }
+      case this.currentSection && this.currentSection.type == GRID: {
+        this.parseGridLine(line)
         break
       }
       default: {
@@ -85,24 +96,29 @@ export class BandItChordSheetParser extends ChordSheetJS.ChordSheetParser {
 
   parseHeader(line, header) {
     switch (true) {
-      case VERSE_CHORUS_REGEX.test(header): {
-        this.song.addLine()
+      case CHORUS_REGEX.test(header): {
+        this.songLine = this.song.addLine()
         const nextline =
           this.hasNextLine() && this.lines[this.currentLine].trim()
-        if (CHORUS_REGEX.test(header) && nextline == "") {
+
+        if (nextline == "") {
           // support empty choruses which are references to other chorus
           // sections
           this.song.addTag(`chorus: ${header}`)
         } else {
-          // we start a chorus or verse section
-          const { section } = line.match(VERSE_CHORUS_REGEX).groups
-          this.startSection(section.toLowerCase(), header)
+          // we start a chorus  section
+          this.startSection(CHORUS, header)
         }
         break
       }
+      case GRID_REGEX.test(header): {
+        const { value } = header.match(GRID_REGEX).groups
+        this.startSection(GRID, value)
+        break
+      }
       default: {
-        this.song.addLine()
-        this.startSection("verse", header)
+        this.songLine = this.song.addLine()
+        this.startSection(VERSE, header)
       }
     }
   }
@@ -110,17 +126,35 @@ export class BandItChordSheetParser extends ChordSheetJS.ChordSheetParser {
   parseMetaData(line) {
     switch (true) {
       case TITLE_ARTIST_REGEX.test(line): {
-        this.song.addLine()
+        this.songLine = this.song.addLine()
         const { title, artist } = line.match(TITLE_ARTIST_REGEX).groups
         this.song.addTag(`title: ${title.trim()}`)
         this.song.addTag(`artist: ${artist.trim()}`)
         break
       }
       case META_TAG_REGEX.test(line): {
-        this.song.addLine()
+        this.songLine = this.song.addLine()
         const { key, value } = line.match(META_TAG_REGEX).groups
         this.song.addTag(`${key.toLowerCase().trim()}: ${value.trim()}`)
         break
+      }
+    }
+  }
+
+  parseGridLine(line) {
+    this.songLine = this.song.addLine()
+    this.song.setCurrentLineType(GRID)
+
+    const matches = line.matchAll(GRIDLINE_REGEX)
+    const indicator =
+      INDICATOR_REGEX.test(line) && line.match(INDICATOR_REGEX)[0]
+
+    for (const match of matches) {
+      const item = match[0]
+      if (indicator == "|" && CHORD_REGEX.test(item)) {
+        this.songLine.addChordLyricsPair(item, "")
+      } else {
+        this.songLine.addChordLyricsPair("", item)
       }
     }
   }

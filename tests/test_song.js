@@ -34,7 +34,7 @@ describe("BandIt Song sections", () => {
     const song = parser.parse(fixtures.extended_chordsheet)
 
     assert.equal(song.sections.length, 3)
-    assert.equal(song.sections[0].title, "Verse Intro")
+    assert.equal(song.sections[0].title, "Intro")
     assert.equal(song.sections[0].type, "verse")
     assert.equal(song.sections[1].title, "Verse 1")
     assert.equal(song.sections[1].type, "verse")
